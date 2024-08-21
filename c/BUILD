@@ -11,6 +11,10 @@ cc_binary(
         "//mediapipe/modules/face_landmark:face_landmark_with_attention.tflite",
         "//mediapipe/modules/hand_landmark:hand_landmark_full.tflite",
         "//mediapipe/modules/palm_detection:palm_detection_full.tflite",
+        "//mediapipe/modules/pose_detection:pose_detection.tflite",
+        "//mediapipe/modules/pose_landmark:pose_landmark_full.tflite",
+        "//mediapipe/modules/pose_landmark:pose_landmark_heavy.tflite",
+        "//mediapipe/modules/pose_landmark:pose_landmark_lite.tflite",
     ],
     deps = [
         "//mediapipe/framework:calculator_framework",
@@ -24,9 +28,10 @@ cc_binary(
         "//mediapipe/framework/port:status",
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/flags:parse",
-        
+
         "//mediapipe/graphs/face_mesh:desktop_live_calculators",
         "//mediapipe/modules/hand_landmark:hand_landmark_tracking_cpu",
+        "//mediapipe/modules/pose_landmark:pose_landmark_cpu",
     ],
     linkshared = 1,
 )

@@ -3,7 +3,7 @@
 set -e
 shopt -s nullglob
 
-VERSION="v0.8.11"
+VERSION="v0.10.14"
 OPENCV_DIR=""
 CONFIG="debug"
 
@@ -53,10 +53,10 @@ echo "--------------------------------"
 
 set +e
 
-echo -n "Checking Bazel (5.2.0) - "
-BAZEL_BIN_PATH="$(type -P bazel-5.2.0)"
+echo -n "Checking Bazel (6 recommended) - "
+BAZEL_BIN_PATH="$(type -P bazel)"
 if [ -z "$BAZEL_BIN_PATH" ]; then
-	echo "ERROR: Bazel (5.2.0) is not installed"
+	echo "ERROR: Bazel is not installed"
 	exit 1
 fi
 echo "OK (Found at $BAZEL_BIN_PATH)"
@@ -123,7 +123,7 @@ elif [ "$CONFIG" = "release" ]; then
 	BAZEL_CONFIG="opt"
 fi
 
-bazel-5.2.0 build -c "$BAZEL_CONFIG" \
+bazel build -c "$BAZEL_CONFIG" \
 	--action_env PYTHON_BIN_PATH="$PYTHON_BIN_PATH" \
 	--define MEDIAPIPE_DISABLE_GPU=1 \
 	mediapipe/c:mediapipe
